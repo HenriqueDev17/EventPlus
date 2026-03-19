@@ -15,6 +15,42 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<ITipoEventoRepository, TipoEventoRepository>();
+builder.Services.AddScoped<ITipoUsuarioRepository, TipoUsuarioRepository>();
+builder.Services.AddScoped<IInstituicaoRepository, InstituicaoRepository>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<IEventoRepository, EventoRepository>();
+
+
+
+//Adicione o serviço de autenticação JWT
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultChallengeScheme = "JwtBearer";
+    options.DefaultAuthenticateScheme = "JwtBearer";
+
+})
+
+.AddJwtBearer("JwtBearer", Options =>
+{
+    Options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+        ValidateIssuer = true, //Valida quem está solicitando o token
+        ValidateAudience = true, //valida quem está recebendo o token
+        ValidateLifetime = true,//define se o token tem um tempo de expiração
+
+        //Chave de acesso ao token
+        IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("filmes-chave-autenticacao-webapi-dev")),
+
+        //valida o tempo de expiração do token
+        ClockSkew = TimeSpan.FromMinutes(7),
+
+        //nome do issuer (de onde o token está vindo)
+        ValidIssuer = "api_EventPlus",
+
+        //nome da audience (para onde ele está indo)
+        ValidAudience = "api_EventPlus"
+    };
+});
 
 // Adiciona Swagger
 builder.Services.AddEndpointsApiExplorer();

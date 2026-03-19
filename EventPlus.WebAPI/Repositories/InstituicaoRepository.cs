@@ -25,7 +25,9 @@ public class InstituicaoRepository :
         var instituicaoBuscado = _context.Instituicaos.Find(id);
         if(instituicaoBuscado != null)
         {
-            instituicaoBuscado.NomeFantasia = instituicao.NomeFantasia;
+            instituicaoBuscado.NomeFantasia = String.IsNullOrWhiteSpace(instituicao.NomeFantasia) ? instituicao.NomeFantasia : instituicao.NomeFantasia;
+            instituicaoBuscado.Cnpj = String.IsNullOrWhiteSpace(instituicao.Cnpj) ? instituicao.Cnpj : instituicao.Cnpj;
+            instituicaoBuscado.Endereco = String.IsNullOrWhiteSpace(instituicao.Endereco) ? instituicao.Endereco : instituicao.Endereco;
             _context.SaveChanges();
 
         }
@@ -73,8 +75,6 @@ public class InstituicaoRepository :
 
     public List<Instituicao> Listar()
     {
-        return _context.Instituicaos
-            .OrderBy(instituicao => instituicao.NomeFantasia)
-            .ToList();
+        return _context.Instituicaos.OrderBy(instituicao => instituicao.NomeFantasia).ToList();
     }
 }
