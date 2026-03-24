@@ -54,7 +54,19 @@ public class EventoController : ControllerBase
             return BadRequest(erro.Message);
         }
     }
+    [HttpGet]
+    public IActionResult Listar()
+    {
+        try
+        {
+            return Ok(_eventoRepository.Listar());
+        }
+        catch (Exception erro)
+        {
 
+            return BadRequest(erro.Message);
+        }
+    }
     [HttpPost]
     public IActionResult Cadastrar(EventoDTO evento)
     {

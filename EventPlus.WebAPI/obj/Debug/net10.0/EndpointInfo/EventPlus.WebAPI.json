@@ -15,6 +15,112 @@
     "version": "v1"
   },
   "paths": {
+    "/api/ComentarioEvento/{IdEvento}/{IdUsuario}": {
+      "get": {
+        "tags": [
+          "ComentarioEvento"
+        ],
+        "parameters": [
+          {
+            "name": "IdUsuario",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "IdEvento",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ComentarioEvento": {
+      "get": {
+        "tags": [
+          "ComentarioEvento"
+        ],
+        "parameters": [
+          {
+            "name": "IdEvento",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ComentarioEvento"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComentarioEventoDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComentarioEventoDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComentarioEventoDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ComentarioEvento/{id}": {
+      "delete": {
+        "tags": [
+          "ComentarioEvento"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Evento/Usuario/{IdUsuario}": {
       "get": {
         "tags": [
@@ -51,6 +157,16 @@
       }
     },
     "/api/Evento": {
+      "get": {
+        "tags": [
+          "Evento"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "post": {
         "tags": [
           "Evento"
@@ -289,6 +405,154 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/LoginDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Presenca/{id}": {
+      "get": {
+        "tags": [
+          "Presenca"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Presenca"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PresencaDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PresencaDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PresencaDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Presenca"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Presenca/ListarMinhas/{idUsuario}": {
+      "get": {
+        "tags": [
+          "Presenca"
+        ],
+        "parameters": [
+          {
+            "name": "idUsuario",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Presenca": {
+      "get": {
+        "tags": [
+          "Presenca"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Presenca"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PresencaDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PresencaDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PresencaDTO"
               }
             }
           }
@@ -574,6 +838,16 @@
       }
     },
     "/api/Usuario": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "post": {
         "tags": [
           "Usuario"
@@ -607,6 +881,24 @@
   },
   "components": {
     "schemas": {
+      "ComentarioEventoDTO": {
+        "type": "object",
+        "properties": {
+          "descricao": {
+            "type": "string",
+            "nullable": true
+          },
+          "idUsuario": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "idEvento": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
       "EventoDTO": {
         "type": "object",
         "properties": {
@@ -668,6 +960,25 @@
           },
           "senha": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PresencaDTO": {
+        "type": "object",
+        "properties": {
+          "situacao": {
+            "type": "boolean"
+          },
+          "idUsuario": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "idEvento": {
+            "type": "string",
+            "format": "uuid",
             "nullable": true
           }
         },
@@ -743,6 +1054,9 @@
   ],
   "tags": [
     {
+      "name": "ComentarioEvento"
+    },
+    {
       "name": "Evento"
     },
     {
@@ -750,6 +1064,9 @@
     },
     {
       "name": "Login"
+    },
+    {
+      "name": "Presenca"
     },
     {
       "name": "TipoEvento"

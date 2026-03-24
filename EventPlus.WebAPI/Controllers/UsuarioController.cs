@@ -1,6 +1,7 @@
 ﻿using EventPlus.WebAPI.DTO;
 using EventPlus.WebAPI.Interfaces;
 using EventPlus.WebAPI.Models;
+using EventPlus.WebAPI.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,6 +36,20 @@ public class UsuarioController : ControllerBase
         {
 
             return BadRequest(error.Message);
+        }
+    }
+
+    [HttpGet]
+    public IActionResult Listar()
+    {
+        try
+        {
+            return Ok(_usuarioRepository.Listar());
+        }
+        catch (Exception erro)
+        {
+            return BadRequest(erro.Message);
+
         }
     }
 

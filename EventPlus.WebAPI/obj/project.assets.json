@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     "net10.0": {
+      "Azure.AI.ContentSafety/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Azure.Core": "1.36.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Azure.AI.ContentSafety.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Azure.AI.ContentSafety.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Azure.Core/1.47.1": {
         "type": "package",
         "dependencies": {
@@ -1176,6 +1192,22 @@
     }
   },
   "libraries": {
+    "Azure.AI.ContentSafety/1.0.0": {
+      "sha512": "62UgYaWYXlieHXnvF6EZjPahgYcuRe0jhsDZu8pMGhvUwkEsgmL4d2ag3Wlk+nYdLbKCE3TIPJmAPI/U/BVYJQ==",
+      "type": "package",
+      "path": "azure.ai.contentsafety/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "CHANGELOG.md",
+        "README.md",
+        "azure.ai.contentsafety.1.0.0.nupkg.sha512",
+        "azure.ai.contentsafety.nuspec",
+        "azureicon.png",
+        "lib/netstandard2.0/Azure.AI.ContentSafety.dll",
+        "lib/netstandard2.0/Azure.AI.ContentSafety.xml"
+      ]
+    },
     "Azure.Core/1.47.1": {
       "sha512": "oPcncSsDHuxB8SC522z47xbp2+ttkcKv2YZ90KXhRKN0YQd2+7l1UURT9EBzUNEXtkLZUOAB5xbByMTrYRh3yA==",
       "type": "package",
@@ -3637,6 +3669,7 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "Azure.AI.ContentSafety >= 1.0.0",
       "BCrypt.Net-Next >= 4.1.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 10.0.5",
       "Microsoft.AspNetCore.OpenApi >= 10.0.3",
@@ -3696,6 +3729,10 @@
       "net10.0": {
         "targetAlias": "net10.0",
         "dependencies": {
+          "Azure.AI.ContentSafety": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          },
           "BCrypt.Net-Next": {
             "target": "Package",
             "version": "[4.1.0, )"

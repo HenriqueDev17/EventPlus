@@ -38,9 +38,11 @@ public class LoginController : ControllerBase
 
              new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email!),
 
+             new Claim(JwtRegisteredClaimNames.Name, usuarioBuscado.Nome!),
+
              new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.IdUsuario.ToString()),
 
-             new Claim(JwtRegisteredClaimNames.Typ, usuarioBuscado.IdTipoUsuarioNavigation!.Titulo),
+             new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuarioNavigation!.Titulo!)
 
          };
 
